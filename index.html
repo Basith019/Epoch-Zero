@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epoch Zero</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="image/New Project (2).png" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <h1>Epoch Zero</h1>
+            <ul class="nav-links">
+                <li><a href="#shows">AI Shows</a></li>
+                <li><a href="#chatbots">Chatbots</a></li>
+                <li><a href="#connections">Connections</a></li>
+                <li><a href="#demo">Live Demo</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+            <div class="hero-btns">
+                <a href="#shows" class="btn">Explore AI Shows</a>
+                <a href="resours.html" class="btn btn-outline">Resources</a>
+            </div>
+        </div>
+        
+        <!-- Floating AI Elements -->
+        <div class="floating-ai" style="top: 20%; left: 70%; animation-delay: 0.5s;">
+            <i class="fas fa-brain" style="font-size: 3rem; color: var(--primary);"></i>
+        </div>
+        <div class="floating-ai" style="top: 60%; left: 75%; animation-delay: 1s;">
+            <i class="fas fa-microchip" style="font-size: 2.5rem; color: var(--accent);"></i>
+        </div>
+        <div class="floating-ai" style="top: 40%; left: 65%; animation-delay: 1.5s;">
+            <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--secondary);"></i>
+        </div>
+    </section>
+
+    <!-- AI Shows Section -->
+    <section id="shows" class="ai-shows">
+        <div class="section-title">
+            <h2>Popular AI Shows & Media</h2>
+            <p>Explore television shows, movies, and documentaries that explore artificial intelligence and its impact on society.</p>
+        </div>
+        
+        <div class="shows-container">
+            <!-- Show cards will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- AI Chatbots Section -->
+    <section id="chatbots" class="ai-chatbots">
+        <div class="section-title">
+            <h2>AI Chatbot Platforms</h2>
+                <a href="chat.html" class="btn-2">More bot</a>
+        </div>
+        
+        <div class="chatbots-container">
+            <!-- Chatbot cards will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- AI Connections Section -->
+    <section id="connections" class="ai-connections">
+        <div class="section-title">
+            <h2>AI Network Connections</h2>
+            <p>Visualize how different AI systems connect and communicate with each other in a complex network.</p>
+        </div>
+        
+        <div class="connections-container" id="connectionsCanvas">
+            <!-- Connections will be drawn by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Interactive Chatbot Demo -->
+    <section id="demo" class="chatbot-demo">
+        <div class="section-title">
+            <h2>Interactive AI Chat Demo</h2>
+            <p>Experience a simulated conversation with our AI assistant. Ask about AI shows, chatbots, or anything else!</p>
+        </div>
+        
+        <div class="chat-window">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hello! I'm your AI guide. How can I help you explore the world of artificial intelligence today?
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off">
+            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-title">
+            <h2>About Epoch Zero</h2>
+            <p>Our mission is to educate and inspire people about artificial intelligence through interactive experiences.</p>
+        </div>
+        
+        <div class="about-content">
+            <p>Epoch Zero is a comprehensive platform that brings together information about AI-themed media, functional chatbots, and visualizations of AI networks. We aim to make artificial intelligence accessible and understandable to everyone, from curious beginners to tech enthusiasts.</p>
+            <p>Our team of AI researchers, developers, and designers work together to create engaging content that showcases the potential of AI while addressing ethical considerations and societal impacts.</p>
+            <p>
+                AI Shows: Dive into exclusive shows that explore the latest in AI technology, trends, and applications. Whether you're looking for expert insights, AI breakthroughs, or inspiring discussions, our AI shows will keep you ahead of the curve. <br>
+
+Chatbots: Experience the future of communication with our AI-powered chatbots. From customer service to interactive problem-solving, our chatbots are designed to provide personalized, efficient, and intelligent interactions. Test them out and see how AI can transform user engagement. <br>
+
+Connections: Join a global community of AI enthusiasts, developers, and innovators. Our Connections section provides a platform for collaboration, sharing ideas, and discussing the future of AI. Whether you're a novice or an expert, you'll find a space to grow, connect, and contribute. <br>
+
+Live Demo: Witness AI in action! Our Live Demo section allows you to engage with real-time demonstrations of advanced AI models. Explore capabilities like language processing, image generation, and more, and see how AI is shaping the future right before your eyes. <br>
+
+
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Epoch Zero</h3>
+                <p>Exploring the frontier of artificial intelligence through media, interaction, and education.</p>
+                <div class="social-links">
+                    <a href="https://x.com/basithmalayali"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/Basith019"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/basith_m2"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/malayali-dev-hub-32a435361/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@MalayaliDevHub"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#shows">AI Shows</a></li>
+                    <li><a href="#chatbots">Chatbots</a></li>
+                    <li><a href="#connections">Connections</a></li>
+                    <li><a href="#demo">Live Demo</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="resours.html">AI News</a></li>
+                    <li><a href="resours.html">Research Papers</a></li>
+                    <li><a href="resours.html">Tutorials</a></li>
+                    <li><a href="resours.html">API Documentation</a></li>
+                    <li><a href="resours.html">Developer Tools</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i>malayalidevhub@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +91 949 666 0968</li>
+                    <li><i class="fas fa-map-marker-alt"></i> India, kerala, malappuram</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Epoch Zero. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nexus - Resources Hub</title>
+    <style>
+        :root {
+            --primary: #7B2CBF;
+            --secondary: #5A189A;
+            --accent: #4776E6;
+            --light: #f8f9fa;
+            --dark: #000000;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), 
+                        url('./image/ChatGPT\ Image\ Apr\ 18\,\ 2025\,\ 03_09_55\ PM.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(71, 118, 230, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(71, 118, 230, 0.5);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 4rem 0;
+            background-color: rgb(0, 0, 0);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Resources Section */
+        .resources {
+            padding: 4rem 0;
+            background-color: #000000;
+        }
+        
+        .resources-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .resources-header h2 {
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.2rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .resource-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .resource-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .resource-card:hover .resource-img img {
+            transform: scale(1.05);
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-category {
+            display: inline-block;
+            background-color: rgba(110, 72, 170, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .resource-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .resource-description {
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .resource-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .resource-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .resource-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 0 1.8rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #3a62c4;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                padding: 1rem 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                z-index: 99;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .resources-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 50px;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <span>Epoch Zero</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">home</a></li>
+                    <li><a href="#news">news</a></li>
+                    <li><a href="#categories">Research</a></li>
+                    <li><a href="#learn">Learn</a></li>
+                    <li><a href="#newsletter">Gmail</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Discover the Best AI Resources</h1>
+            <p>Curated collection of tools, research papers, tutorials, and APIs to accelerate your AI journey</p>
+            <div>
+                <a href="#resources" class="btn">Explore Resources</a>
+                <a href="index.html" class="btn btn-outline">Back to AI</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Resource Categories</h2>
+                <p>Browse through our carefully curated collection of AI resources</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>AI News</h3>
+                    <p>Latest developments and breakthroughs in artificial intelligence</p>
+                    <a href="https://substack.com/home?utm_source=user-menu" class="btn">View Resources</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Research Papers</h3>
+                    <p>Cutting-edge academic papers and publications</p>
+                    <a href="https://paperswithcode.com/" class="btn">View Resources</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Tutorials</h3>
+                    <p>Learning resources for all skill levels</p>
+                    <a href="https://www.coursera.org/learn/ai-for-everyone?action=enroll" class="btn">View Resources</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API Docs</h3>
+                    <p>Documentation for AI services and platforms</p>
+                    <a href="https://platform.openai.com/docs/overview" class="btn">View Resources</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Developer Tools</h3>
+                    <p>Essential tools for AI development</p>
+                    <a href="https://jupyter.org/" class="btn">View Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources" id="news">
+        <div class="container">
+            <div class="resources-header">
+                <h2>Featured Resources</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="news">News</button>
+                    <button class="filter-btn" data-filter="research">Research</button>
+                    <button class="filter-btn" data-filter="tutorials">Tutorials</button>
+                    <button class="filter-btn" data-filter="apis">APIs</button>
+                    <button class="filter-btn" data-filter="tools">Tools</button>
+                </div>
+            </div>
+            
+            <div class="resources-grid">
+                <!-- News Resources -->
+                <div class="resource-card" data-category="news">
+                    <div class="resource-img">
+                        <img src="https://dkpxaouzpedok.cloudfront.net/wp-content/uploads/2022/06/metaverse-to-change-the-future-of-work-all-you-need-to-know.jpg" alt="AI News">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">News</span>
+                        <h3 class="resource-title">MIT Tech Review AI</h3>
+                        <p class="resource-description">Stay updated with the latest AI news and analysis from MIT Technology Review.</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-clock"></i> Daily Updates</span>
+                            <a href="https://www.technologyreview.com/topic/artificial-intelligence/" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Research Resources -->
+                <div class="resource-card" data-category="research">
+                    <div class="resource-img">
+                        <img src="https://media.istockphoto.com/id/2156590823/photo/artificial-intelligence-content-generator-a-man-uses-a-laptop-to-interact-with-ai-assistant.jpg?s=612x612&w=0&k=20&c=aYqcAI0QM0M6q1awvGyJCP7YnokMKzkKPad9Lzwu6-I=" alt="Research Papers">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">Research</span>
+                        <h3 class="resource-title">arXiv AI Papers</h3>
+                        <p class="resource-description">Open-access repository of scientific papers in AI and machine learning.</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-clock"></i> Weekly Updates</span>
+                            <a href="https://arxiv.org/list/cs.AI/recent" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tutorial Resources -->
+                <div class="resource-card" data-category="tutorials">
+                    <div class="resource-img">
+                        <img src="https://timespro.com/_next/image?url=https%3A%2F%2Ftimesproweb-static-backend-prod.s3.ap-south-1.amazonaws.com%2FGen_AI_For_Managers_Website_Banner_Image_467def21bb.webp&w=3840&q=75" alt="Tutorials">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">Tutorials</span>
+                        <h3 class="resource-title">Fast.ai Courses</h3>
+                        <p class="resource-description">Free practical deep learning courses for coders with no ML prerequisites.</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-clock"></i> Self-paced</span>
+                            <a href="https://www.fast.ai/" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- API Resources -->
+                <div class="resource-card" data-category="apis">
+                    <div class="resource-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="API Documentation">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">APIs</span>
+                        <h3 class="resource-title">OpenAI API Docs</h3>
+                        <p class="resource-description">Comprehensive documentation for OpenAI's powerful AI models and APIs.</p>
+                        <div class="resource-meta">
+                            <span><i class="far fa-clock"></i> Updated Weekly</span>
+                            <a href="https://platform.openai.com/docs" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools Resources -->
+                <div class="resource-card" data-category="tools">
+                    <div class="resource-img">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Developer Tools">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">Tools</span>
+                        <h3 class="resource-title">Google Colab</h3>
+                        <p class="resource-description">Free cloud-based Jupyter notebook environment for machine learning.</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-infinity"></i> Free Tier</span>
+                            <a href="https://colab.research.google.com/" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Resources -->
+                <div class="resource-card" data-category="research">
+                    <div class="resource-img">
+                        <img src="https://www.shutterstock.com/image-photo/abstract-dark-blue-digital-background-600nw-1358734463.jpg" alt="Research Papers">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">Research</span>
+                        <h3 class="resource-title">Papers With Code</h3>
+                        <p class="resource-description">ML papers with code, datasets, and benchmarks all in one place.</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-code-branch"></i> Open Source</span>
+                            <a href="https://paperswithcode.com/" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card" data-category="tutorials">
+                    <div class="resource-img">
+                        <img src="https://images.ctfassets.net/aq13lwl6616q/7M8HdDnKXSf3UmI2rdqY8W/1e6be544c1d14250495ca12ce7006cde/PyTorch_Thumbnail_3_-_Academy.png" alt="Tutorials">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">Tutorials</span>
+                        <h3 class="resource-title">PyTorch Tutorials</h3>
+                        <p class="resource-description">Official tutorials covering PyTorch from basics to advanced topics.</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-layer-group"></i> Beginner to Advanced</span>
+                            <a href="https://pytorch.org/tutorials/" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card" data-category="apis">
+                    <div class="resource-img">
+                        <img src="https://venturebeat.com/wp-content/uploads/2024/09/nuneybits_Vector_art_of_the_iconic_Hugging_Face_emoji_with_hand_5258d562-de7f-442b-9740-0a5d96e618f6.webp?w=400" alt="API Documentation">
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-category">APIs</span>
+                        <h3 class="resource-title">Hugging Face API</h3>
+                        <p class="resource-description">Documentation for the Transformers library and Inference API.</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-robot"></i> NLP Focus</span>
+                            <a href="https://huggingface.co/docs" class="resource-link" target="_blank">Visit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <h2>Stay Updated with AI</h2>
+            <p>Subscribe to our newsletter to receive curated AI resources, news, and tutorials directly to your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Enter</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" id="learn">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Epoch Zero</h3>
+                    <p>Your comprehensive guide to artificial intelligence resources for developers, researchers, and enthusiasts.</p>
+                    <div class="social-links">
+                        <a href="https://x.com/basithmalayali"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/Basith019"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/basith_m2"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/malayali-dev-hub-32a435361/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@MalayaliDevHub"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#news">AI News</a></li>
+                        <li><a href="#research">Research Papers</a></li>
+                        <li><a href="#tutorials">Tutorials</a></li>
+                        <li><a href="#apis">API Docs</a></li>
+                        <li><a href="#tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Epoch Zero. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Filter Resources
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const resourceCards = document.querySelectorAll('.resource-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                resourceCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Newsletter Form Submission
+        const newsletterForm = document.getElementById('newsletterForm');
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            
+            // Here you would typically send the email to your server
+            alert(`Thank you for subscribing with ${email}! You'll receive our next newsletter.`);
+            newsletterForm.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('header nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

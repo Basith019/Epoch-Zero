@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Epoch Zero</title>
+    <style>
+         /* CSS Reset & Base Styles */
+         :root {
+            --primary: #7B2CBF;
+            --secondary: #5A189A;
+            --accent: #4776e6;
+            --dark: #000000;
+            --light: #f8f9fa;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+          /* Chatbots Section */
+          .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(110, 72, 170, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(110, 72, 170, 0.6);
+        }
+        
+          .chatbots-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .chatbot-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 380px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chatbot-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            transition: height 0.3s;
+        }
+        
+        .chatbot-card:hover::before {
+            height: 100%;
+        }
+        
+        .chatbot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .chatbot-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .chatbot-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(110, 72, 170, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .chatbot-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .chatbot-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .chatbot-features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .chatbot-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chatbot-features i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+          /* Responsive Styles */
+          @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            section {
+                padding: 4rem 5%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+                padding: 2rem 0;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .hero {
+                padding: 0 5%;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .hero-btns {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .connections-container {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .ai-node {
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- AI Chatbots Section -->
+    <section id="chatbots" class="ai-chatbots">
+        <div class="section-title">
+         <h2>AI Chatbot Platforms</h2>         
+                <a href="index.html" class="btn">Back</a>           
+        </div>
+        
+        <div class="chatbots-container">
+            <!-- Chatbot cards will be populated by JavaScript -->
+        </div>
+    </section>
+
+        <script>
+            // Populate AI Chatbots
+            const chatbotsContainer = document.querySelector('.chatbots-container');
+            const aiChatbots = [
+                {
+                    name: "ChatGPT",
+                    description: "Advanced conversational AI by OpenAI",
+                    icon: "fas fa-comment-dots",
+                    features: [
+                        "Natural language processing",
+                        "Contextual understanding",
+                        "Multi-turn conversations",
+                        "Knowledge up to 2023"
+                    ],
+                    link: "https://chat.openai.com"
+                },
+                {
+                    name: "siri",
+                    description: "Apple's virtual assistant",
+                    icon: "fas fa-headset",
+                    features: [
+                        "Voice recognition",
+                        "Smart home integration",
+                        "Personalized suggestions",
+                        "Music and media control"
+                    ],
+                    link: "https://www.apple.com/siri/"
+                },
+                {
+                    name: "alexa",
+                    description: "Amazon's voice assistant",
+                    icon: "fas fa-microphone",
+                    features: [
+                        "Voice commands",
+                        "Smart home control",
+                        "Music streaming",
+                        "Shopping assistance"
+                    ],
+                    link: "https://www.amazon.com/alexa"
+                },
+                {
+                    name: "google assistant",
+                    description: "Google's AI assistant",
+                    icon: "fas fa-microchip",
+                    features: [
+                        "Voice search",
+                        "Smart home control",
+                        "Personalized recommendations",
+                        "Integration with Google services"
+                    ],
+                    link: "https://assistant.google.com/"
+                },
+                {
+                    name: "Bixby",
+                    description: "Samsung's AI assistant",
+                    icon: "fas fa-mobile-alt",
+                    features: [
+                        "Voice commands",
+                        "Smart home integration",
+                        "Contextual information",
+                        "Device control"
+                    ],
+                    link: "https://www.samsung.com/global/galaxy/apps/bixby/",
+                },
+                {
+                    name: "Intercom Fin",
+                    description: "AI-powered customer support",
+                    icon: "fas fa-headset",
+                    features: [
+                        "Automated responses",
+                        "Live chat support",
+                        "User segmentation",
+                        "Integration with CRM systems"
+                    ],
+                    link: "https://www.intercom.com/fin"
+                },
+                {
+                    name: "Drift",
+                    description: "Conversational marketing platform",
+                    icon: "fas fa-comments",
+                    features: [
+                        "Chatbots for lead generation",
+                        "Real-time messaging",
+                        "Integration with marketing tools",
+                        "Analytics and reporting"
+                    ],
+                    link: "https://www.drift.com/"
+                },
+                {
+                    name: "Zendesk Chat",
+                    description: "Customer support chat solution",
+                    icon: "fas fa-headset",
+                    features: [
+                        "Live chat support",
+                        "Automated responses",
+                        "Integration with Zendesk products",
+                        "Analytics and reporting"
+                    ],
+                    link: "https://www.zendesk.com/chat/"
+                },
+                {
+                    name: "Tidio",
+                    description: "AI chatbot for e-commerce",
+                    icon: "fas fa-shopping-cart",
+                    features: [
+                        "Live chat support",
+                        "Automated responses",
+                        "Integration with e-commerce platforms",
+                        "Analytics and reporting"
+                    ],
+                    link: "https://www.tidio.com/"
+                },
+                {
+                    name: "ManyChat",
+                    description: "Chatbot platform for marketing",
+                    icon: "fas fa-comments",
+                    features: [
+                        "Automated responses",
+                        "Integration with social media platforms",
+                        "Lead generation tools",
+                        "Analytics and reporting"
+                    ],
+                    link: "https://www.manychat.com/"
+                },
+                {
+                    name: "Freshchat AI ",
+                    description: "AI-powered customer messaging platform",
+                    icon: "fas fa-comments",
+                    features: [
+                        "Live chat support",
+                        "Automated responses",
+                        "Integration with Freshworks products",
+                        "Analytics and reporting"
+                    ],
+                    link: "https://www.freshworks.com/live-chat-software/"
+                },
+                {
+                    name: "Botpress",
+                    description: "Open-source chatbot platform",
+                    icon: "fas fa-robot",
+                    features: [
+                        "Customizable workflows",
+                        "Multi-channel support",
+                        "Natural language processing",
+                        "Analytics and reporting"
+                    ],
+                    link: "https://botpress.com/"
+                },
+                {
+                    name: "Rasa",
+                    description: "Open-source conversational AI platform",
+                    icon: "fas fa-robot",
+                    features: [
+                        "Customizable workflows",
+                        "Natural language understanding",
+                        "Integration with messaging platforms",
+                        "Analytics and reporting"
+                    ],
+                    link: "https://rasa.com/",
+                },
+                {
+                    name: "ChatterBot",
+                    description: "Python library for creating chatbots",
+                    icon: "fas fa-code",
+                    features: [
+                        "Machine learning-based",
+                        "Customizable training data",
+                        "Integration with various platforms",
+                        "Open-source"
+                    ],
+                    link: "https://chatterbot.readthedocs.io/en/stable/"
+                },
+                {
+                    name: "Mistral (via Poe)",
+                    description: "AI chatbot platform",
+                    icon: "fas fa-robot",
+                    features: [
+                        "Conversational AI",
+                        "Natural language processing",
+                        "Integration with various platforms",
+                        "Customizable workflows"
+                    ],
+                    link: "https://poe.com/mistral"
+                },
+                {
+                    name: "Meta AI",
+                    description: "AI research and development by Meta",
+                    icon: "fas fa-brain",
+                    features: [
+                        "Natural language processing",
+                        "Computer vision",
+                        "Reinforcement learning",
+                        "Open-source research"
+                    ],
+                    link: "https://ai.facebook.com/"
+                },
+                {
+                    name: "Character.AI",
+                    description: "AI chatbot platform for creating characters",
+                    icon: "fas fa-user-astronaut",
+                    features: [
+                        "Customizable characters",
+                        "Natural language processing",
+                        "Integration with various platforms",
+                        "User-generated content"
+                    ],
+                    link: "https://character.ai/"
+                },
+                
+
+            ];
+            
+            aiChatbots.forEach(chatbot => {
+                const chatbotCard = document.createElement('div');
+                chatbotCard.className = 'chatbot-card';
+                chatbotCard.innerHTML = `
+                    <div class="chatbot-header">
+                        <div class="chatbot-icon">
+                            <i class="${chatbot.icon}"></i>
+                        </div>
+                        <div class="chatbot-info">
+                            <h3>${chatbot.name}</h3>
+                            <p>${chatbot.description}</p>
+                        </div>
+                    </div>
+                    <ul class="chatbot-features">
+                        ${chatbot.features.map(feature => `
+                            <li><i class="fas fa-check-circle"></i> ${feature}</li>
+                        `).join('')}
+                    </ul>
+                    <a href="${chatbot.link}" target="_blank" class="btn">Visit ${chatbot.name}</a>
+                `;
+                chatbotsContainer.appendChild(chatbotCard);
+            });
+            
+        </script>
+</body>
+</html>
